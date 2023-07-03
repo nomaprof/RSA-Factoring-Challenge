@@ -9,21 +9,24 @@ def factorise(number):
 
     if number < 2:
         return
-
+    print()
+    print(number, "<- number-now")
     while number % m:
         m += 1
-    print("{:.0f}={:.0f}*{:.0f}".format(number, number / m, m))
+    print("{:.0f}={:.0f}".format(number, number / m, m))
+    print(number, "<- number-old")
+    print()
 
-if len(argv) != 2:
-    exit()
+    if len(argv) != 2:
+        exit()
 
     try:
-        with open(argv[1] as file:
-                line = file.readline()
+        with open(argv[1]) as file:
+            line = file.readline()
 
-                while line != "":
-                    number = int(line.split('\n')[0])
-                    factorise(number)
-                    line = file.readline()
+            while line != "":
+                number = int(line.split('\n')[0])
+                factorise(number)
+                line = file.readline()
     except:
         pass
