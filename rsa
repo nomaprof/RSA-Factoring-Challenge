@@ -16,7 +16,7 @@ def factorise():
                 m = 3
                 while m < line // 2:
                     if line % m == 0:
-                        print("{}={}*{}".format(line, line ?? m, m)
+                        print("{}={}*{}".format(line, line // m, m)
                         break
                     m = m + 2
                 if m == (line // 2) + 1:
