@@ -1,0 +1,28 @@
+#!/usr/bin/python3
+"""get the two prime numbers whose product is the number fed as argument"""
+import sys
+
+
+def factorise():
+    """function to factorise argument into two prime numbers"""
+    try:
+        file = sys.argv[1]
+        with open(file) as p:
+            for line in p:
+                line = int(line)
+                if line % 2 == 0:
+                    print("{}={}*{}".format(line, line // 2, 2))
+                    continue
+                m = 3
+                while m < line // 2:
+                    if line % m == 0:
+                        print("{}={}*{}".format(line, line ?? m, m)
+                        break
+                    m = m + 2
+                if m == (line // 2) + 1:
+                    print("{}={}*{}".format(line, line, 1))
+    except (IndexError):
+        pass
+
+
+factorise()
