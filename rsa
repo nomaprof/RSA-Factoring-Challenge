@@ -1,28 +1,45 @@
 #!/usr/bin/python3
-"""get the two prime numbers whose product is the number fed as argument"""
-import sys
+from sys import argv
+import math
+"""receives one whole number and break into two prime factors"""
 
 
-def factorise():
-    """function to factorise argument into two prime numbers"""
-    try:
-        file = sys.argv[1]
-        with open(file) as p:
-            for line in p:
-                line = int(line)
-                if line % 2 == 0:
-                    print("{}={}*{}".format(line, line // 2, 2))
-                    continue
-                m = 3
-                while m < line // 2:
-                    if line % m == 0:
-                        print("{}={}*{}".format(line, line // m, m)
-                        break
-                    m = m + 2
-                if m == (line // 2) + 1:
-                    print("{}={}*{}".format(line, line, 1))
-    except (IndexError):
-        pass
+def is_prime(num):
+    """checks if a number is prime"""
+    i = 3
+    if num % 2 == 0:
+        return False
+    while i * i <= num:
+        if num % i == 0:
+            return False
+        i += 2
+    return True
 
 
-factorise()
+def factory(num):
+    """Get the two prime numbers used to get the number"""
+    if num % 2 == 0:
+        i = 2
+        print("{}={}*{}".format(num, int(num/i), i))
+    else:
+        sq = math.sqrt(num)
+        if sq % 1 == 0:
+            print("{}={}*{}".format(num, sq, int(num/sq)))
+            return
+        sq = int(sq) + 1
+        for i in range(3, sq, +2):
+            if num % i == 0:
+                if is_prime(i):
+                    print("{}={}*{}".format(num, int(num/i), i))
+                    return
+
+
+def factors(filename):
+    """read_file"""
+    with open(filename, encoding="utf-8") as my_file:
+        for i in my_file.readlines():
+            n = int(i)
+            result = factory(n)
+
+
+if __name__ == "__main__":
